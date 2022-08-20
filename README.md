@@ -1,5 +1,12 @@
-# IN
-Broncode voor de IN:indoor navigation proof of concept applicatie. Gemaakt als bachelorproefonderzoek bij HoGent.
+# IN:indoor navigation
+<p float="left">
+  <img src="./images/Screenshot-SelectModus.png" width="200" />
+  <img src="images/Screenshot-SelectPath.png" width="200" />
+  <img src="./images/Screenshot-Navigating.png" width="200" /> 
+  <img src="./images/Screenshot-Map.png" width="200" />
+</p>
+
+Broncode van de IN proof of concept applicatie. Gemaakt als bachelorproefonderzoek bij HoGent.
 
 Functionaliteiten
 - Selecteer een pad om te volgen in een indoor locatie
@@ -12,13 +19,6 @@ Belangrijke gebruikte libraries
 - react-native-smartpdr
 - ngraph
 - react-native-svg
-
-<p float="left">
-  <img src="./images/Screenshot-Map.png" width="200" />
-  <img src="./images/Screenshot-Navigating.png" width="200" /> 
-  <img src="./images/Screenshot-SelectModus.png" width="200" />
-  <img src="images/Screenshot-SelectPath.png" width="200" />
-</p>
 
 # Usage
 ```powershell
