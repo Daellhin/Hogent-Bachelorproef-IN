@@ -23,10 +23,7 @@ function Header({ scene, previous, navigation }) {
       ) : null}
       <Appbar.Content
         title={
-          previous ?
-            title
-            :
-            "IN: Indoor navigatie POC"
+          previous ? title : 'IN: Indoor navigatie POC'
         }
       />
     </Appbar.Header>

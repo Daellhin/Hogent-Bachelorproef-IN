@@ -15,7 +15,7 @@ export function polarToCartesian2D(centerX: number, centerY: number, radius: num
     return {
         x: centerX + (radius * Math.cos(angleInRadians)),
         y: centerY + (radius * Math.sin(angleInRadians))
-    }
+    };
 }
 
 /**

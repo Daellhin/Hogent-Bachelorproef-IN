@@ -21,7 +21,7 @@ export function CompassScreen({ navigation }) {
 	const compassHeading = useCompassHeading(mag);
 
 	const headingData = round(radiansToDegrees(heading));
-	const compassHeadingData = round(radiansToDegrees(compassHeading))
+	const compassHeadingData = round(radiansToDegrees(compassHeading));
 
 	Accelerometer.setUpdateInterval(updateInterval);
 	Magnetometer.setUpdateInterval(updateInterval);

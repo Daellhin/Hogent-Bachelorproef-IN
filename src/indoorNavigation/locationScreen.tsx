@@ -12,7 +12,7 @@ import floorplan from '../../assets/Floorplan.png';
 import { useCompassHeading, useStepLength } from '../react-native-smartpdr/utils/customHooks';
 import { range } from '../react-native-smartpdr/utils/sensors_utils';
 import { Navigation } from '../stack';
-import { graphJsonString } from "../utils/constants";
+import { graphJsonString } from '../utils/constants';
 import { degreesToRadians, radiansToDegrees } from '../utils/mathUtils';
 import { createGraphFromPathNodes, createNavigableNodes, createPathFinder } from '../utils/ngraphUtils';
 import { describeArc } from '../utils/svgUtils';
@@ -71,7 +71,7 @@ export function LocationScreen({ route, navigation }: Props) {
 			setMagnetometerSubscription(null);
 			gyroscopeSubscription && gyroscopeSubscription.remove();
 			setGyroscopeSubscription(null);
-		}
+		};
 	}, [navigation]);
 
 	useEffect(() => {
@@ -87,12 +87,12 @@ export function LocationScreen({ route, navigation }: Props) {
 	}
 
 	const graphJsonInput = useMemo(() => {
-		const fullGraph = fromJSON(graphJsonString)
-		const pathfinder = createPathFinder(fullGraph)
+		const fullGraph = fromJSON(graphJsonString);
+		const pathfinder = createPathFinder(fullGraph);
 
 		if (route?.params?.startId && route?.params?.endId) {
 			const startNode = fullGraph.getNode(route.params.startId);
-			setLocationWithNode(startNode)
+			setLocationWithNode(startNode);
 
 			const path = pathfinder.find(route.params.startId, route.params.endId);
 			setCheckPoints(createNavigableNodes(path.reverse()));
@@ -113,7 +113,7 @@ export function LocationScreen({ route, navigation }: Props) {
 						key={key} stroke={theme.colors.placeholder} strokeWidth={4} strokeLinecap={'round'} opacity={0.9}
 						d={`M ${startX * locationScale + xOffset},${startY * locationScale + yOffset} ${endX * locationScale + xOffset},${endY * locationScale + yOffset}`}
 					/>
-				)
+				);
 			}
 
 			function findNodeData(nodeId: NodeId) {
@@ -124,10 +124,10 @@ export function LocationScreen({ route, navigation }: Props) {
 				const fromNodeData = findNodeData(link.fromId);
 				const toNodeData = findNodeData(link.toId);
 				return createNavVisualisationLine(index, fromNodeData.x, fromNodeData.y, toNodeData.x, toNodeData.y);
-			})
+			});
 		}
 
-		return createNavVisualisation(graphJsonInput)
+		return createNavVisualisation(graphJsonInput);
 	}, [graphJsonInput]);
 
 	const arcPath = useMemo(() => {
@@ -138,7 +138,7 @@ export function LocationScreen({ route, navigation }: Props) {
 	}, [location, headingCompas]);
 
 	function goToNextCheckpoint() {
-		const currentCheckpoint = checkPoints[currentCheckpointIndex + 1]
+		const currentCheckpoint = checkPoints[currentCheckpointIndex + 1];
 		setLocationWithNode(currentCheckpoint);
 		setcurrentCheckpointIndex(currentCheckpointIndex + 1);
 	}
@@ -151,35 +151,35 @@ export function LocationScreen({ route, navigation }: Props) {
 		if (checkPoints) {
 			function renderCheckpoints() {
 				if (hasReachedFinalCheckpoint()) {
-					return (<Text style={s.checkPointText}>Doel bereikt</Text>)
+					return (<Text style={s.checkPointText}>Doel bereikt</Text>);
 				} else {
-					const currentCheckpoint = checkPoints[currentCheckpointIndex]
-					const nextCheckpoint = checkPoints[currentCheckpointIndex + 1]
+					const currentCheckpoint = checkPoints[currentCheckpointIndex];
+					const nextCheckpoint = checkPoints[currentCheckpointIndex + 1];
 					return (
-						<Text style={{ alignContent: "center" }}>
+						<Text style={{ alignContent: 'center' }}>
 							<Text style={s.checkPointText}>{currentCheckpoint.id}  </Text>
 							<AntDesign name="arrowright" size={20} color="black" />
 							<Text style={s.checkPointText}>  {nextCheckpoint.id}</Text>
 						</Text>
-					)
+					);
 				}
 			}
 
 			return (
 				<View style={[s.bottomTab, s.topShadow]}>
 					{renderCheckpoints()}
-					<Button disabled={hasReachedFinalCheckpoint()} onPress={goToNextCheckpoint} mode={"outlined"}>
+					<Button disabled={hasReachedFinalCheckpoint()} onPress={goToNextCheckpoint} mode={'outlined'}>
 						Volgende punt
 					</Button>
 				</View>
 			);
 		}
-	}, [currentCheckpointIndex, checkPoints])
+	}, [currentCheckpointIndex, checkPoints]);
 
 	return (
 		<View>
 			{
-				<View style={{ position: "absolute", zIndex: 1, width: "100%", marginLeft: 10, marginTop: 10 }}>
+				<View style={{ position: 'absolute', zIndex: 1, width: '100%', marginLeft: 10, marginTop: 10 }}>
 					<Text>Location| x:{location.x.toFixed(3)}, y:{location.y.toFixed(3)}</Text>
 					<Text>HeadingCompass| {radiansToDegrees(headingCompas).toFixed(2)}°</Text>
 					<Text>HeadingStep| {radiansToDegrees(headingStep ?? 0)}</Text>
@@ -194,8 +194,8 @@ export function LocationScreen({ route, navigation }: Props) {
 				>
 					<Image
 						href={floorplan}
-						width={"100%"}
-						height={"100%"}
+						width={'100%'}
+						height={'100%'}
 						opacity={0.99}
 					/>
 					{navVisualisation}
@@ -226,7 +226,7 @@ export function LocationScreen({ route, navigation }: Props) {
 
 const s = StyleSheet.create({
 	topShadow: {
-		shadowColor: "#000",
+		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
 			height: 12,
@@ -236,14 +236,14 @@ const s = StyleSheet.create({
 		elevation: 24,
 	},
 	bottomTab: {
-		alignItems: "center",
+		alignItems: 'center',
 		paddingVertical: 7,
 		zIndex: 1,
 		bottom: 0,
-		backgroundColor: "white",
+		backgroundColor: 'white',
 	},
 	checkPointText: {
-		fontWeight: "bold",
+		fontWeight: 'bold',
 		fontSize: 20
 	}
 });

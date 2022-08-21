@@ -28,14 +28,14 @@ export function HeadingDirectionScreen({ navigation }) {
 
   const _subscribe = () => {
     const sensor = {
-      acc: Accelerometer.addListener((data) => {
-        setAcc(data);
+      acc: Accelerometer.addListener((e) => {
+        setAcc(e);
       }),
-      mag: Magnetometer.addListener((data) => {
-        setMag(data);
+      mag: Magnetometer.addListener((e) => {
+        setMag(e);
       }),
-      gyr: Gyroscope.addListener((data) => {
-        setGyr(data);
+      gyr: Gyroscope.addListener((e) => {
+        setGyr(e);
       }),
     };
     setSubscription(sensor);

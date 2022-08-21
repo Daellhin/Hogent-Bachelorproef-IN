@@ -13,8 +13,7 @@ export function Main() {
         colors: {
           ...DefaultTheme.colors,
           primary: '#397AF9',
-          accent: "#873df2",
-          
+          accent: '#873df2',
         },
       }}
     >

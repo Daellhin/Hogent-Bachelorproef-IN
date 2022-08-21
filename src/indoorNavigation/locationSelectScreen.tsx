@@ -6,7 +6,7 @@ import DropDown from 'react-native-paper-dropdown';
 import { Navigation } from '../stack';
 import { areEmpty } from '../utils/javasciptUtils';
 import { createNavigableOptions } from '../utils/ngraphUtils';
-import { graphJsonString } from "../utils/constants";
+import { graphJsonString } from '../utils/constants';
 
 type Props = {
     navigation: Navigation
@@ -15,16 +15,16 @@ export function LocationSelectScreen({ navigation }: Props) {
     const [showDropDownStart, setShowDropDownStart] = useState(false);
     const [showDropDownEnd, setShowDropDownEnd] = useState(false);
 
-    const [dropDownStartValue, setDropDownStartValue] = useState<string>("wc");
-    const [dropDownEndValue, setDropDownEndValue] = useState<string>("teras");
+    const [dropDownStartValue, setDropDownStartValue] = useState<string>('wc');
+    const [dropDownEndValue, setDropDownEndValue] = useState<string>('teras');
 
     const navigableOptions = useMemo(() => {
         const jsonGraph: JsonGraph = JSON.parse(graphJsonString);
-        return createNavigableOptions(jsonGraph)
+        return createNavigableOptions(jsonGraph);
     }, []);
 
     function startNavigation() {
-        navigation.navigate("Location", { startId: dropDownStartValue, endId: dropDownEndValue })
+        navigation.navigate('Location', { startId: dropDownStartValue, endId: dropDownEndValue });
     }
 
     return (
@@ -32,8 +32,8 @@ export function LocationSelectScreen({ navigation }: Props) {
         <View style={s.viewWrapper}>
             <Text style={s.title}>Kiest een startpunt</Text>
             <DropDown
-                label={"Start"}
-                mode={"outlined"}
+                label={'Start'}
+                mode={'outlined'}
                 visible={showDropDownStart}
                 showDropDown={() => setShowDropDownStart(true)}
                 onDismiss={() => setShowDropDownStart(false)}
@@ -41,12 +41,12 @@ export function LocationSelectScreen({ navigation }: Props) {
                 setValue={setDropDownStartValue}
                 list={navigableOptions}
             />
-            <View style={s.spacerMd}></View>
+            <View style={s.spacerMd} />
 
             <Text style={s.title}>Kies een eindpunt</Text>
             <DropDown
-                label={"Einde"}
-                mode={"outlined"}
+                label={'Einde'}
+                mode={'outlined'}
                 visible={showDropDownEnd}
                 showDropDown={() => setShowDropDownEnd(true)}
                 onDismiss={() => setShowDropDownEnd(false)}
@@ -54,7 +54,7 @@ export function LocationSelectScreen({ navigation }: Props) {
                 setValue={setDropDownEndValue}
                 list={navigableOptions}
             />
-            <View style={s.spacerLg}></View>
+            <View style={s.spacerLg} />
 
             <Button disabled={areEmpty(dropDownEndValue, dropDownEndValue)} icon="map-marker-radius" mode="contained" onPress={startNavigation}>
                 Start
@@ -70,7 +70,7 @@ const s = StyleSheet.create({
     },
     title: {
         fontSize: 17,
-        fontWeight: "700"
+        fontWeight: '700'
     },
     spacerMd: {
         marginBottom: 10
