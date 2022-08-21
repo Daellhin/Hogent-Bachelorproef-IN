@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, Platform, Dimensions } from 'react-native';
-import { WebView } from 'react-native-webview';
 import { Asset } from 'expo-asset';
+import React, { useEffect, useRef, useState } from 'react';
+import { Dimensions, Platform, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, useTheme } from 'react-native-paper';
-
-const html = require('../assets/html/index.html');
+import { WebView } from 'react-native-webview';
+import html from '../../assets/html/index.html';
 
 const download = async () => {
   let file = Asset.fromModule(html);
