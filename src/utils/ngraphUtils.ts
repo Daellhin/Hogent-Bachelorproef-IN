@@ -1,7 +1,7 @@
 import { JsonGraph } from 'ngraph.fromjson';
 import createGraph, { Graph, Node } from 'ngraph.graph';
 import { aStar } from 'ngraph.path';
-import { capitalizeFirstLetter } from './javasciptUtils';
+import { capitalizeFirstLetter } from './javascriptUtils';
 
 export function createPathFinder(graph: Graph) {
     return aStar(graph, {
@@ -14,7 +14,7 @@ export function createPathFinder(graph: Graph) {
     });
 }
 
-// use this function to create a graph from the output of a pathfingin algorithm
+// use this function to create a graph from the output of a pathfinding algorithm
 export function createGraphFromPathNodes(nodes: Node[]) {
     const graph = createGraph();
     for (let index = nodes.length - 1; index >= 0; index--) {
@@ -30,7 +30,7 @@ export function createGraphFromPathNodes(nodes: Node[]) {
 }
 
 /**
- * Return all graph nodes that are navigable (this means they have a meaningfull id)
+ * Return all graph nodes that are navigable (this means they have a meaningful id, and not a number)
  * TODO rework to use labels i.p.o string ids
  */
 export function createNavigableOptions(jsonGraph: JsonGraph) {
@@ -45,7 +45,7 @@ export function createNavigableOptions(jsonGraph: JsonGraph) {
 }
 
 /**
- * Return all graph nodes that are navigable (this means they have a meaningfull id)
+ * Return all graph nodes that are navigable (this means they have a meaningful id, and not a number)
  * TODO rework to use labels i.p.o string ids
  */
 export function createNavigableNodes(nodes: Node[]) {

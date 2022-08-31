@@ -53,7 +53,7 @@ export function LocationScreen({ route, navigation }: Props) {
 	const [stepLength, headingStep, heading] = useStepLength(accelerometerData, magnetometerData, gyroscopeData, stepScale, imageNorthOffset);
 
 	const [checkPoints, setCheckPoints] = useState<JsonNode[]>();
-	const [currentCheckpointIndex, setcurrentCheckpointIndex] = useState(0);
+	const [currentCheckpointIndex, setCurrentCheckpointIndex] = useState(0);
 
 	useEffect(() => {
 		Accelerometer.setUpdateInterval(updateInterval);
@@ -105,9 +105,9 @@ export function LocationScreen({ route, navigation }: Props) {
 		}
 	}, [route]);
 
-	const navVisualisation = useMemo(() => {
-		function createNavVisualisation(graphJson: JsonGraph) {
-			function createNavVisualisationLine(key: number, startX: number, startY: number, endX: number, endY: number) {
+	const navVisualization = useMemo(() => {
+		function createNavVisualization(graphJson: JsonGraph) {
+			function createNavVisualizationLine(key: number, startX: number, startY: number, endX: number, endY: number) {
 				return (
 					<Path
 						key={key} stroke={theme.colors.placeholder} strokeWidth={4} strokeLinecap={'round'} opacity={0.9}
@@ -123,11 +123,11 @@ export function LocationScreen({ route, navigation }: Props) {
 			return graphJson.links.map((link, index) => {
 				const fromNodeData = findNodeData(link.fromId);
 				const toNodeData = findNodeData(link.toId);
-				return createNavVisualisationLine(index, fromNodeData.x, fromNodeData.y, toNodeData.x, toNodeData.y);
+				return createNavVisualizationLine(index, fromNodeData.x, fromNodeData.y, toNodeData.x, toNodeData.y);
 			});
 		}
 
-		return createNavVisualisation(graphJsonInput);
+		return createNavVisualization(graphJsonInput);
 	}, [graphJsonInput]);
 
 	const arcPath = useMemo(() => {
@@ -140,14 +140,14 @@ export function LocationScreen({ route, navigation }: Props) {
 	function goToNextCheckpoint() {
 		const currentCheckpoint = checkPoints[currentCheckpointIndex + 1];
 		setLocationWithNode(currentCheckpoint);
-		setcurrentCheckpointIndex(currentCheckpointIndex + 1);
+		setCurrentCheckpointIndex(currentCheckpointIndex + 1);
 	}
 
 	function hasReachedFinalCheckpoint() {
 		return currentCheckpointIndex === checkPoints.length - 1;
 	}
 
-	const checkpoinComponent = useMemo(() => {
+	const checkpointComponent = useMemo(() => {
 		if (checkPoints) {
 			function renderCheckpoints() {
 				if (hasReachedFinalCheckpoint()) {
@@ -192,13 +192,14 @@ export function LocationScreen({ route, navigation }: Props) {
 					minScale={0.75} maxScale={2} initialZoom={1}
 
 				>
+					{/* Map */}
 					<Image
 						href={floorplan}
 						width={'100%'}
 						height={'100%'}
 						opacity={0.99}
 					/>
-					{navVisualisation}
+					{navVisualization}
 
 					<Circle
 						cx={location.x} cy={location.y} r={12 * indicatorScale}
@@ -218,7 +219,7 @@ export function LocationScreen({ route, navigation }: Props) {
 					/>
 				</SvgPanZoom>
 
-				{checkpoinComponent}
+				{checkpointComponent}
 			</View>
 		</View>
 	);

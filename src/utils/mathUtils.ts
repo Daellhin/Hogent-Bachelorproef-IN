@@ -7,7 +7,7 @@ export function degreesToRadians(degrees: number) {
 }
 
 /**
- * Convert polar to cartesian coordinates
+ * Convert polar to Cartesian coordinates
  * Polar: position is determined by the distance and angle from te center
  * Cartesian: position is determined the distance along each axis
  */

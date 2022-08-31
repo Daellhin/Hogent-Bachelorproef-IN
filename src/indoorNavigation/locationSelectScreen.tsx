@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import DropDown from 'react-native-paper-dropdown';
 import { Navigation } from '../stack';
-import { areEmpty } from '../utils/javasciptUtils';
+import { areEmpty } from '../utils/javascriptUtils';
 import { createNavigableOptions } from '../utils/ngraphUtils';
 import { graphJsonString } from '../utils/constants';
 
@@ -15,8 +15,8 @@ export function LocationSelectScreen({ navigation }: Props) {
     const [showDropDownStart, setShowDropDownStart] = useState(false);
     const [showDropDownEnd, setShowDropDownEnd] = useState(false);
 
-    const [dropDownStartValue, setDropDownStartValue] = useState<string>('wc');
-    const [dropDownEndValue, setDropDownEndValue] = useState<string>('teras');
+    const [dropDownStartValue, setDropDownStartValue] = useState<string>();
+    const [dropDownEndValue, setDropDownEndValue] = useState<string>();
 
     const navigableOptions = useMemo(() => {
         const jsonGraph: JsonGraph = JSON.parse(graphJsonString);
