@@ -25,7 +25,7 @@
     "ngraph.path": "^1.4.0",
     "ngraph.tojson": "^1.2.0",
     "react": "18.0.0",
-    "react-native": "0.69.4",
+    "react-native": "0.69.5",
     "react-native-canvas": "^0.1.37",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-paper": "^4.8.1",
