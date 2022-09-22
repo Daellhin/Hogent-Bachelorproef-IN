@@ -30,7 +30,7 @@ export function LocationSelectScreen({ navigation }: Props) {
     return (
 
         <View style={s.viewWrapper}>
-            <Text style={s.title}>Kiest een startpunt</Text>
+            <Text style={s.title}>Kies een startpunt</Text>
             <DropDown
                 label={'Start'}
                 mode={'outlined'}
